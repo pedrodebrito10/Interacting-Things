@@ -1,0 +1,76 @@
+let x1, y1, dx1, dy1, r1, g1, b1;
+let x2, y2, dx2, dy2, r2, g2, b2;
+let radius1, radius2;
+
+function setup() {
+  createCanvas(400, 400);
+  reset();
+}
+
+function draw() {
+  background(220);
+
+  fill(r1, g1, b1);
+  circle(x1, y1, radius1);
+
+  fill(r2, g2, b2);
+  circle(x2, y2, radius2);
+
+  x1 += dx1;
+  y1 += dy1;
+  x2 += dx2;
+  y2 += dy2;
+
+  if (x1 - radius1 / 2 < 0 || x1 + radius1 / 2 > width) dx1 *= -1;
+  if (y1 - radius1 / 2 < 0 || y1 + radius1 / 2 > height) dy1 *= -1;
+  if (x2 - radius2 / 2 < 0 || x2 + radius2 / 2 > width) dx2 *= -1;
+  if (y2 - radius2 / 2 < 0 || y2 + radius2 / 2 > height) dy2 *= -1;
+
+  if (dist(x1, y1, x2, y2) < (radius1 + radius2) / 2) {
+    r1 = random(255);
+    g1 = random(255);
+    b1 = random(255);
+    r2 = random(255);
+    g2 = random(255);
+    b2 = random(255);
+    dx1 *= -1;
+    dy1 *= -1;
+    dx2 *= -1;
+    dy2 *= -1;
+  }
+}
+
+function keyPressed() {
+  reset();
+}
+
+function reset() {
+  x1 = random(width);
+  y1 = random(height);
+  dx1 = random(-2, 2);
+  dy1 = random(-2, 2);
+  radius1 = random(20, 50);
+  r1 = random(255);
+  g1 = random(255);
+  b1 = random(255);
+
+  x2 = random(width);
+  y2 = random(height);
+  dx2 = random(-2, 2);
+  dy2 = random(-2, 2);
+  radius2 = random(20, 50);
+  r2 = random(255);
+  g2 = random(255);
+  b2 = random(255);
+}
+
+
+
+
+
+
+
+
+
+
+
